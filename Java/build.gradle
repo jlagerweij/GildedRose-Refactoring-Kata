@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'pmd'
 }
 
 repositories {
@@ -24,4 +25,9 @@ task texttest(type: JavaExec) {
     main = "com.gildedrose.TexttestFixture"
     classpath = sourceSets.test.runtimeClasspath
     args "30"
+}
+
+pmd {
+    consoleOutput = true
+    ruleSetFiles = files("$rootDir/src/test/resources/pmd-exclusions.xml")
 }
