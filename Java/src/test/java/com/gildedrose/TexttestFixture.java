@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 import static java.lang.String.format;
 
-public class TextTestFixture {
+public class TexttestFixture {
 
     @Test
     public void checkAllIsGold() throws IOException {
