@@ -1,11 +1,13 @@
 package com.gildedrose;
 
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.ItemTestHelper.assertItemEquals;
 
-public class ConjuredItemTestHelper {
+@Disabled("Should pass after implementing the Conjured item")
+public class ConjuredItemTest {
 
     @Test
     public void item_conjured_decreasesInQuality_twiceTheSpeed() {
