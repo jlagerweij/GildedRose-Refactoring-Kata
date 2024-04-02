@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'pmd'
+    id "info.solidsoft.pitest" version "1.15.0"
 }
 
 repositories {
@@ -15,14 +16,17 @@ dependencies {
 
 group = 'com.gildedrose'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+
+java {
+    sourceCompatibility = '1.8'
+}
 
 test {
     useJUnitPlatform()
 }
 
 task texttest(type: JavaExec) {
-    main = "com.gildedrose.TexttestFixture"
+    mainClass = "com.gildedrose.TexttestFixture"
     classpath = sourceSets.test.runtimeClasspath
     args "30"
 }
@@ -30,4 +34,18 @@ task texttest(type: JavaExec) {
 pmd {
     consoleOutput = true
     ruleSetFiles = files("$rootDir/src/test/resources/pmd-exclusions.xml")
+}
+
+pitest {
+    failWhenNoMutations = false
+    junit5PluginVersion = '1.2.1'
+    pitestVersion = '1.15.3'
+    targetClasses = ['com.gildedrose.*']
+    useClasspathFile = true
+    timeoutFactor = BigDecimal.valueOf(2L)
+    timeoutConstInMillis = 30000
+    timestampedReports = false
+    excludedMethods = ['toString']
+    threads = 1
+    maxSurviving = 0
 }
