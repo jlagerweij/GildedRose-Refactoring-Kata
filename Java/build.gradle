@@ -1,7 +1,7 @@
 plugins {
-    id 'java'
-    id 'pmd'
-    id "info.solidsoft.pitest" version "1.15.0"
+    id("java")
+    id("pmd")
+    id("info.solidsoft.pitest") version "1.15.0"
 }
 
 repositories {
@@ -9,24 +9,24 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.6.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.6.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.2")
 }
 
-group = 'com.gildedrose'
-version = '0.0.1-SNAPSHOT'
+group = "com.gildedrose"
+version = "0.0.1-SNAPSHOT"
 
 java {
-    sourceCompatibility = '1.8'
+    sourceCompatibility = "1.8"
 }
 
 test {
     useJUnitPlatform()
 }
 
-task texttest(type: JavaExec) {
-    mainClass = "com.gildedrose.TexttestFixture"
+tasks.register("texttest", JavaExec) {
+    mainClass = "com.gildedrose.GoldIntegrationTest"
     classpath = sourceSets.test.runtimeClasspath
     args "30"
 }
@@ -38,14 +38,14 @@ pmd {
 
 pitest {
     failWhenNoMutations = false
-    junit5PluginVersion = '1.2.1'
-    pitestVersion = '1.15.3'
-    targetClasses = ['com.gildedrose.*']
+    junit5PluginVersion = "1.2.1"
+    pitestVersion = "1.15.3"
+    targetClasses = ["com.gildedrose.*"]
     useClasspathFile = true
     timeoutFactor = BigDecimal.valueOf(2L)
     timeoutConstInMillis = 30000
     timestampedReports = false
-    excludedMethods = ['toString']
+    excludedMethods = ["toString"]
     threads = 1
     maxSurviving = 0
 }
