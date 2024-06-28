@@ -18,7 +18,8 @@ group = "com.gildedrose"
 version = "0.0.1-SNAPSHOT"
 
 java {
-    sourceCompatibility = "1.8"
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 test {
@@ -37,6 +38,7 @@ tasks.register("texttest", JavaExec) {
 
 pmd {
     consoleOutput = true
+    toolVersion = "7.2.0"
     ruleSetFiles = files("$rootDir/src/test/resources/pmd-exclusions.xml")
 }
 
